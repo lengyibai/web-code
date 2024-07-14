@@ -1,0 +1,86 @@
+<!--
+ * @Author: 冷弋白
+ * @LastEditTime: 2021-01-25 20:19:56
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>冷弋白的网页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            position: fixed;
+            top: 0;
+            left: 0;
+            user-select: none;
+            /* 禁止双击出现蓝色背景 */
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            perspective: 1000px;
+            background: rgb(47, 47, 47);
+            overflow: hidden;
+        }
+
+        .Entity {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            transform-style: preserve-3d;
+            transform: rotateY(0deg) rotateX(45deg);
+            transform-origin: center center 100px;
+            animation: libra 1s infinite linear;
+        }
+
+        @keyframes libra {
+            100% {
+                transform: rotateY(360deg) rotateX(45deg);
+            }
+        }
+
+        .layer {
+            width: 250px;
+            height: 250px;
+            position: absolute;
+            background-color: #fff;
+            transform: translateZ(calc(1px * var(--a)));
+            opacity: .1;
+            /* border: .25px solid rgba(120, 120, 120, 0.5); */
+            /* 字体描边增加立体感 */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="Entity">
+    </div>
+    <script>
+        var layer = [];
+        var Entity = document.querySelector('.Entity')
+        for (let i = 0; i < 250; i++) {
+            layer.push('<div class="layer" style="--a:' + i + ';filter: brightness(' + i / 2.5 + '%);"></div>')
+        }
+        Entity.innerHTML = layer.join(' ');
+    </script>
+</body>
+
+</html>
+</body>
+
+</html>

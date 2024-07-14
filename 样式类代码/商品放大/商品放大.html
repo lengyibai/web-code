@@ -1,0 +1,137 @@
+<!--
+* @Author: 冷弋白
+ * @LastEditTime: 2020-12-11 12:32:48
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>冷弋白的网页</title>
+    <style>
+        body {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .small {
+            position: relative;
+            border: 1px solid #ccc;
+            width: 300px;
+            /* 宽高可更改，但必须相等 */
+            height: 300px;
+            top: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .small>img {
+            position: absolute;
+            /* 图片自适应 */
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        .small>.kuang {
+            position: absolute;
+            width: 50px;
+            /* 宽高可更改，但必须相等 */
+            height: 50px;
+            background-color: rgba(255, 255, 255, 0.5);
+            opacity: 0;
+        }
+
+        .small>.big {
+            display: none;
+            position: absolute;
+            width: 300px;
+            /* 宽高可更改，但必须相等 */
+            height: 300px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+        }
+
+        .small>.big>.big-img {
+            position: absolute;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: contain;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="small">
+        <img class="img" src="02.jpg" alt="" />
+        <div class="kuang"></div>
+        <div class="big">
+            <div class="big-img"></div>
+        </div>
+    </div>
+</body>
+<script>
+    var small = document.querySelector(".small");
+    var smallImg = small.querySelector('.img');
+    var kuang = document.querySelector(".kuang");
+    var big = document.querySelector(".big");
+    var bigImg = big.querySelector(".big-img");
+    //右盒子与左盒子距离始终不变
+    big.style.left = small.offsetWidth + "px";
+    //右盒子内图片随白块变大而倍数变大
+    bigImg.style.width = small.offsetWidth / (kuang.offsetWidth / 100) + "%";
+    bigImg.style.height = small.offsetHeight / (kuang.offsetHeight / 100) + "%";
+    //两盒子图片路径一致
+    bigImg.style.backgroundImage = 'url(' + smallImg.src + ')';
+    //进入左盒子
+    small.addEventListener("mouseover", function () {
+        kuang.style.opacity = "1";
+        big.style.display = "block";
+    });
+    //鼠标离开左盒子，白块和右盒子消失
+    small.addEventListener("mouseout", function () {
+        kuang.style.opacity = "0";
+        big.style.display = "none";
+    });
+    //鼠标在盒子内移动
+    small.addEventListener("mousemove", function (e) {
+        //获取鼠标在盒子内位置
+        var x = e.pageX - this.offsetLeft;
+        var y = e.pageY - this.offsetTop;
+        //白块向上、左移动，使鼠标居中白块内
+        var kuangX = e.pageX - this.offsetLeft - kuang.offsetWidth / 2;
+        var kuangY = e.pageY - this.offsetTop - kuang.offsetHeight / 2;
+        //获取白块在左盒子内的最大移动距离
+        var kuangLeft = small.offsetWidth - kuang.offsetWidth;
+        var kuangTop = small.offsetHeight - kuang.offsetHeight;
+        //白块跟随鼠标移动
+        kuang.style.left = kuangX + "px";
+        kuang.style.top = kuangY + "px";
+        //鼠标超出左盒子，右盒子隐藏，由于右盒子是左盒子的孩子，所以必须通过这种方式判断
+        if (x > small.offsetWidth || y > small.offsetHeight) {
+            big.style.display = "none";
+        }
+        //防止白块脱离左盒子
+        if (kuangX > kuangLeft) {
+            kuang.style.left = kuangLeft + "px";
+        }
+        if (kuangY > kuangTop) {
+            kuang.style.top = kuangTop + "px";
+        }
+        //防止白块脱离左盒子
+        if (kuangX <= 0) {
+            kuang.style.left = "0px";
+        }
+        if (kuangY <= 0) {
+            kuang.style.top = "0px";
+        }
+        //(白色浮块距离父盒子边缘的距离) / (自身的宽高 / 100) * (右边盒子的宽度 / 100)
+        bigImg.style.left = -kuang.offsetLeft / (kuang.offsetWidth / 100) * (big.offsetWidth / 100) + "px";
+        bigImg.style.top = -kuang.offsetTop / (kuang.offsetHeight / 100) * (big.offsetHeight / 100) + "px";
+    });
+</script>
+
+</html>

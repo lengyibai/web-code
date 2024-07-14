@@ -1,0 +1,145 @@
+<!--
+ * @Author: 冷弋白
+ * @LastEditTime: 2020-12-09 02:15:56
+-->
+<!--
+ * @Author: 冷弋白
+ * @LastEditTime: 2020-12-06 16:53:48
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>冷弋白的网页</title>
+    <style>
+        .closeTab {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="OSA">
+        <div class="leftObs"></div>
+        <div class="rightObs"></div>
+    </div>
+    <div class="father">
+        <div class="closeTab"></div>
+    </div>
+    <!-- body内容写在father里 -->
+    <script>
+        var closeTab = document.querySelector('.closeTab')
+        var leftObs = document.querySelector('.leftObs')
+        var rightObs = document.querySelector('.rightObs')
+        closeTab.addEventListener('click', function () {
+            //添加倒放动画样式
+            leftObs.classList.add('leftAnimation');
+            rightObs.classList.add('rightAnimation');
+            setTimeout(() => {
+                window.close();
+            }, 1550);
+        })
+    </script>
+</body>
+
+<!-- 默认样式写在下 -->
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    table {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    /********** 父盒子样式动画 **********/
+    .father {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        background-color: #ccc;
+        animation: enlarge 1s ease 0.65s forwards;
+        transform: scale(0);
+    }
+
+    @keyframes enlarge {
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .OSA {
+        position: absolute;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+
+    /********** 左、右黑块样式、动画 **********/
+    .leftObs,
+    .rightObs {
+        position: absolute;
+        width: 50%;
+        height: 100vh;
+        background-color: black;
+        animation: 1s ease 0.5s forwards;
+        z-index: 999;
+    }
+
+    .leftObs {
+        left: 0;
+        animation-name: leftObs;
+    }
+
+    @keyframes leftObs {
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+
+    .rightObs {
+        right: 0;
+        animation-name: rightObs;
+    }
+
+    @keyframes rightObs {
+        100% {
+            transform: translateX(100%);
+        }
+    }
+
+    /********** 左黑块样式、倒放动画 **********/
+    .leftAnimation {
+        transform: translateX(-100%);
+        animation: LRAnimation 1s ease 0.5s forwards;
+    }
+
+    .rightAnimation {
+        transform: translateX(100%);
+        animation: LRAnimation 1s ease 0.5s forwards;
+    }
+
+    @keyframes LRAnimation {
+        100% {
+            transform: translateX(0%);
+        }
+    }
+</style>
+
+</html>

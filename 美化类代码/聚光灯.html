@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>无标题文档</title>
+    <style>
+      body {
+        background-color: #000;
+      }
+      h1 {
+        position: relative;
+        color: #333;
+        font-size: 50px;
+      }
+      h1:after {
+        content: '冷弋白';
+        color: transparent;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: -webkit-linear-gradient(left, #eb3b5a, #fa8231, #f7b731, #20bf6b, #0fb9b1);
+        -webkit-background-clip: text;
+        clip-path: circle(100px at 0% 50%);
+        -weblit-clip-path: circle(100px at 0% 50%);
+        animation: light 3s infinite;
+      }
+      @keyframes light {
+        0% {
+          clip-path: circle(50px at 0% 50%);
+          -weblit-clip-path: circle(50px at 0% 50%);
+        }
+        50% {
+          clip-path: circle(50px at 100% 50%);
+          -weblit-clip-path: circle(50px at 100% 50%);
+        }
+        100% {
+          clip-path: circle(50px at 0% 50%);
+          -weblit-clip-path: circle(100px at 0% 50%);
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>冷弋白</h1>
+  </body>
+</html>

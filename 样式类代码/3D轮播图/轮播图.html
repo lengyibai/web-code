@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>冷弋白的网页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            transition: all 1s;
+        }
+
+        body {
+            display: flex;
+            height: 100vh;
+            flex-flow: column wrap;
+            justify-content: center;
+            align-items: center;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+
+        .father {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            transform-style: preserve-3d;
+            transform: translateZ(520px);
+        }
+
+        .box {
+            width: 100%;
+            height: 100%;
+            transform: translateZ(-520px) rotateY(0deg);
+            transform-style: preserve-3d;
+            /* animation: a 15s infinite; */
+            z-index: -999;
+        }
+
+        .lyb {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 600px;
+            height: 300px;
+            overflow: hidden;
+        }
+
+        .abc {
+            overflow: visible;
+            transform-style: preserve-3d;
+            transform: rotateX(-35deg);
+        }
+
+        .lyb:hover .box {
+            animation-play-state: paused;
+        }
+
+        .son {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            background-color: pink;
+            transform-origin: center center -520px;
+            transform: rotateY(calc(60deg * var(--i)));
+        }
+
+        button {
+            position: absolute;
+            width: 100px;
+            height: 50px;
+            top: 0;
+            transform: translateZ(100px);
+            cursor: pointer;
+        }
+
+        .btn {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            position: absolute;
+            width: 100px;
+            height: 10px;
+            bottom: 25px;
+            z-index: 999;
+            background-color: rgba(0, 0, 0, 0.5);
+            transform: translateZ(100px);
+        }
+
+        .btn li {
+            list-style: none;
+            width: 10px;
+            height: 100%;
+            background-color: #fff;
+            border-radius: 50%;
+        }
+
+        .btn li:first-child {
+            background-color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lyb">
+        <ul class="btn">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <button>切换</button>
+        <div class="box">
+            <div class="father">
+                <img class="son" src="./img/1.jpg" alt="" style="--i: 1" />
+                <img class="son" src="./img/2.jpg" alt="" style="--i: 2" />
+                <img class="son" src="./img/3.jpg" alt="" style="--i: 3" />
+                <img class="son" src="./img/4.jpg" alt="" style="--i: 4" />
+                <img class="son" src="./img/5.jpg" alt="" style="--i: 5" />
+                <img class="son" src="./img/6.jpg" alt="" style="--i: 6" />
+            </div>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script>
+        let lis = document.querySelectorAll('li');
+        let box = document.querySelector('.box');
+        let lyb = document.querySelector('.lyb');
+        let btn = document.querySelector('.btn');
+        let button = document.querySelector('button');
+        lis.forEach((a, b) => {
+            a.addEventListener('mouseup', function () {
+                lis.forEach(b => {
+                    b.style.backgroundColor = '#fff';
+                });
+                a.style.backgroundColor = '#000';
+                box.style.transform =
+                    'translateZ(-520px) rotateY(' + -b * 60 + 'deg)';
+            });
+        });
+        button.addEventListener('mouseup', function () {
+            lyb.classList.toggle('abc');
+        });
+        let deg = 0,
+            b = 1;
+        timer(deg);
+
+        function timer(deg) {
+            let a = setInterval(() => {
+                lis.forEach(a => {
+                    a.style.backgroundColor = '#fff';
+                });
+                lis[b].style.backgroundColor = '#000';
+                deg += 60;
+                b++;
+                box.style.transition = '';
+                box.style.transform =
+                    'translateZ(-520px) rotateY(' + deg + 'deg)';
+                console.log(`当前已旋转${deg}度`);
+                if (b == 6) {
+                    b = 0;
+                }
+                if (deg == 360) {
+                    setTimeout(() => {
+                        box.style.transition = 'none';
+                        box.style.transform =
+                            'translateZ(-520px) rotateY(0deg)';
+                        deg = 0;
+                        console.log('无缝回到0度');
+                    }, 950);
+                }
+            }, 2000);
+        }
+    </script>
+</body>
+
+</html>

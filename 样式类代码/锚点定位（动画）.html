@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<!--
+  create_time：2022-02-20 星期天 18:10:06
+-->
+<html lang='en'>
+
+<head>
+  <meta charset='UTF-8' />
+  <meta http-equiv='X-UA-Compatible' content='ie=edge' />
+  <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no' />
+  <title>冷弋白的网页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      color: #fff;
+      transition: all 0.5s;
+    }
+
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      background-color: #000;
+      overflow-x: hidden;
+    }
+
+    .left {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-evenly;
+      width: 200px;
+      height: 75vh;
+      font-size: 50px;
+    }
+
+    .right {
+      position: relative;
+      display: flex;
+      flex: 0.5;
+      flex-direction: column;
+      align-items: center;
+      height: 75vh;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    li {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-shrink: 0;
+      justify-content: center;
+      align-items: center;
+      font-size: 200px;
+      list-style: none;
+    }
+
+    .active {
+      color: #3498db;
+      font-size: 75px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="left">
+    <a href="#a">A</a>
+    <a href="#b">B</a>
+    <a href="#c">C</a>
+  </div>
+  <div class="right">
+    <li id="a" style="background-color: #c0392b;">A</li>
+    <li id="b" style="background-color: #27ae60;">B</li>
+    <li id="c" style="background-color: #2980b9;">C</li>
+  </div>
+
+  <!-- JS -->
+  <script>
+    const scollBox = document.querySelector('.right');
+    const li = document.querySelectorAll('li');
+    const a = document.querySelectorAll('a');
+    let active = document.querySelector('a');
+
+    function fn() {
+      li.forEach((item, index) => {
+        let height = item.getBoundingClientRect().top + item.scrollHeight - 1 - scollBox.offsetTop
+        if (height >= 0 && height < item.scrollHeight) {
+          a[index].classList.add('active')
+        } else {
+          a[index].classList.remove('active')
+        }
+      })
+    }
+    fn()
+    scollBox.onscroll = fn
+  </script>
+</body>
+
+</html>

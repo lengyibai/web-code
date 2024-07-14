@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=10.0" />
+  <title>冷弋白的网页</title>
+  <link rel="stylesheet" href="./index.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #000;
+    }
+
+    h1 {
+      font-size: 50px;
+      color: #fff;
+      margin: 25px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>布局实现</h1>
+  <div class="grid">
+    <div class="box1">
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script>
+    const box = document.querySelectorAll('.box');
+    window.onload = function () {
+      setTimeout(() => {
+        box.forEach(item => {
+          item.style.height = item.offsetWidth / 2 + 'px';
+        });
+      }, 100);
+    };
+    window.onresize = function () {
+      box.forEach(item => {
+        item.style.height = item.offsetWidth / 2 + 'px';
+      });
+    };
+  </script>
+</body>
+
+</html>

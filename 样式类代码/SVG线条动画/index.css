@@ -1,0 +1,47 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.hamburger {
+  background-color: #000;
+}
+.hamburger svg {
+  width: 75vh;
+  height: 75vh;
+  overflow: hidden;
+  vertical-align: middle;
+}
+.hamburger .line {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 3;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.hamburger .line1 {
+  stroke-dasharray: 60 147;
+  stroke: #c0392b;
+}
+.hamburger .line2 {
+  stroke-dasharray: 60 0;
+  stroke: #27ae60;
+}
+.hamburger .line3 {
+  stroke-dasharray: 60 147;
+  stroke: #2980b9;
+}
+.opened .line1,
+.opened .line3 {
+  stroke-dasharray: 73 134;
+  stroke-dashoffset: -134;
+}
+.opened .line2 {
+  stroke-dasharray: 0 60;
+  stroke-dashoffset: -30;
+}

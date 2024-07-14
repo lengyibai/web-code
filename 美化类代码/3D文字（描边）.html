@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>冷弋白的网页</title>
+    <style>
+      :root {
+        /* 描边阴影 */
+        --text-shadow-top: 4px;
+        --text-shadow-left: 2.5px;
+        --text-shadow: 2px;
+        --text-shadow-color: rgb(255, 255, 255);
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        background: rgb(159, 159, 159);
+        overflow: hidden;
+      }
+
+      .stage {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        font-size: 100px;
+        transform-style: preserve-3d;
+        transform: rotateX(20deg) rotateY(20deg);
+      }
+
+      .layer {
+        font-family: '黑体';
+        text-align: center;
+        position: absolute;
+        color: rgb(235, 235, 235);
+        transform: translateZ(calc(-5px * var(--a)));
+        /* text-shadow: 0 5px 5px rgba(0, 0, 0, 0.1); */
+        filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.1));
+      }
+
+      .layer:nth-child(1) {
+        text-shadow: 0 0 5px #fff;
+      }
+
+      .layer:nth-child(n + 11) {
+        -webkit-text-stroke: 35px #ccc;
+        filter: drop-shadow(0 3px 3px rgba(0, 0, 0, 0.15));
+      }
+
+      .layer:last-child {
+        color: #ccc;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="index.css" />
+        <title>冷弋白的网页</title>
+      </head>
+
+      <body>
+        <div class="stage">
+          <div class="layer" style="--a: 1">物流管理系统</div>
+          <div class="layer" style="--a: 2">物流管理系统</div>
+          <div class="layer" style="--a: 3">物流管理系统</div>
+          <div class="layer" style="--a: 4">物流管理系统</div>
+          <div class="layer" style="--a: 5">物流管理系统</div>
+          <div class="layer" style="--a: 6">物流管理系统</div>
+          <div class="layer" style="--a: 7">物流管理系统</div>
+          <div class="layer" style="--a: 8">物流管理系统</div>
+          <div class="layer" style="--a: 9">物流管理系统</div>
+          <div class="layer" style="--a: 10">物流管理系统</div>
+          <div class="layer" style="--a: 11">物流管理系统</div>
+          <div class="layer" style="--a: 12">物流管理系统</div>
+          <div class="layer" style="--a: 13">物流管理系统</div>
+          <div class="layer" style="--a: 14">物流管理系统</div>
+          <div class="layer" style="--a: 15">物流管理系统</div>
+          <div class="layer" style="--a: 16">物流管理系统</div>
+          <div class="layer" style="--a: 17">物流管理系统</div>
+          <div class="layer" style="--a: 18">物流管理系统</div>
+          <div class="layer" style="--a: 19">物流管理系统</div>
+          <div class="layer" style="--a: 20">物流管理系统</div>
+        </div>
+        <script></script>
+      </body>
+    </html>
+  </body>
+</html>

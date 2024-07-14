@@ -1,0 +1,153 @@
+<!--
+ * @Author: 冷弋白
+ * @LastEditTime: 2021-01-27 15:04:29
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>冷弋白的网页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .father {
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            justify-items: center;
+            align-items: center;
+            grid-template-rows: 75px auto;
+            grid-template-areas:
+                "a"
+                "b";
+        }
+
+        header {
+            grid-area: a;
+            margin-bottom: 10px;
+            font-size: 50px;
+            color: #fff;
+            text-shadow: 0 2px 3px black;
+        }
+
+        .color {
+            grid-area: b;
+            width: 35%;
+            height: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        li {
+            list-style: none;
+            transition: 0.25s;
+        }
+
+        li:hover {
+            transform: scale(1.1);
+            box-shadow: 0 3px 10px 0 black;
+        }
+
+        .success {
+            display: none;
+            position: absolute;
+            opacity: 0;
+            width: 100vw;
+            height: 100vh;
+            transition: opacity 0.25s linear;
+        }
+
+        .success>h1 {
+            line-height: 100vh;
+            text-align: center;
+            font-size: 125px;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="father">
+        <header>点击复制颜色RGB</header>
+        <ul class="color">
+            <li style="background-color: rgb(220, 53, 69)"></li>
+            <li style="background-color: rgb(253, 126, 20)"></li>
+            <li style="background-color: rgb(255, 193, 7)"></li>
+            <li style="background-color: rgb(40, 167, 69)"></li>
+            <li style="background-color: rgba(32, 201, 150)"></li>
+            <li style="background-color: rgb(23, 162, 184)"></li>
+            <li style="background-color: rgb(0, 123, 255)"></li>
+            <li style="background-color: rgb(105, 84, 180)"></li>
+            <li style="background-color: rgb(102, 16, 242)"></li>
+            <li style="background-color: rgb(232, 62, 140)"></li>
+            <li style="background-color: rgb(51, 51, 51)"></li>
+            <li style="background-color: rgb(108, 117, 125)"></li>
+            <li style="background-color: rgb(253,124,90)"></li>
+            <li style="background-color: rgb(255,231,118)"></li>
+            <li style="background-color: rgb(124,232,193)"></li>
+            <li style="background-color: rgb(94,154,249)"></li>
+            <li style="background-color: rgb(148,140,255)"></li>
+            <li style="background-color: rgb(248,169,255)   "></li>
+        </ul>
+    </div>
+    <div class="success">
+        <h1>Success</h1>
+    </div>
+    <!-- JS -->
+    <script>
+        function copyText(text, callback) {
+            var tag = document.createElement("input");
+            tag.setAttribute("id", "cp_hgz_input");
+            tag.value = text;
+            document.getElementsByTagName("body")[0].appendChild(tag);
+            document.getElementById("cp_hgz_input").select();
+            document.execCommand("copy");
+            document.getElementById("cp_hgz_input").remove();
+            if (callback) {
+                callback(text);
+            }
+        }
+
+        var li = document.querySelectorAll("li");
+        var success = document.querySelector(".success");
+        // var music = new Audio("music.mp3");
+        for (var i = 0; i < li.length; i++) {
+            li[i].onclick = function () {
+                // music.play();
+                var color = this.style.backgroundColor;
+                success.style.backgroundColor = color;
+                copyText(color, function () {
+                    success.style.display = "block";
+                    setTimeout(() => {
+                        success.style.opacity = "1";
+                    }, 0);
+                    setTimeout(() => {
+                        success.style.opacity = "0";
+                    }, 750);
+                    setTimeout(() => {
+                        success.style.display = "none";
+                    }, 950);
+                });
+            };
+        }
+    </script>
+</body>
+</style>
+
+</html>

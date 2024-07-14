@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+        />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>冷弋白的网页</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            body {
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background-color: #000;
+            }
+            .b {
+                padding: 6px 15px;
+                color: #fff;
+                text-align: center;
+                margin: 10px;
+                background-color: #000;
+                border: 1px solid #fff;
+                transition: all 0.5s;
+            }
+            .a:hover .b {
+                opacity: 0;
+            }
+            .a .b:hover {
+                transform: scale(1.4);
+                opacity: 1;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="a">
+            <div class="b">悬浮</div>
+            <div class="b">悬浮</div>
+            <div class="b">悬浮</div>
+            <div class="b">悬浮</div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            perspective: 600px;
+            background-color: black;
+        }
+
+        .color {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            transform-style: preserve-3d;
+            animation: color 30s infinite linear;
+
+        }
+
+
+        .color:hover {
+            animation-play-state: paused;
+        }
+
+        .red-box {
+            animation: red 4s ease-in-out infinite, size 4s linear infinite;
+        }
+
+        .green-box {
+            animation: green 4s ease-in-out infinite, size 4s linear infinite;
+        }
+
+        .blue-box {
+            animation: blue 4s ease-in-out infinite, size 4s linear infinite;
+        }
+
+        .yellow-box {
+            animation: yellow 4s ease-in-out infinite, size 4s linear infinite;
+        }
+
+        .red-box,
+        .green-box,
+        .blue-box,
+        .yellow-box {
+            width: 200px;
+            height: 200px;
+            transform-style: preserve-3d;
+            transition: all 2s;
+
+        }
+
+        .red-box:hover,
+        .green-box:hover,
+        .blue-box:hover,
+        .yellow-box:hover {
+            transform: translateZ(100px);
+        }
+
+        .red-box:active {
+            transform: translate3d(-100px, -100px, 0);
+        }
+
+        .green-box:active {
+            transform: translate3d(100px, -100px, 0);
+        }
+
+
+        .blue-box:active {
+            transform: translate3d(-100px, 100px, 0);
+        }
+
+        .yellow-box:active {
+
+            transform: translate3d(100px, 100px, 0);
+        }
+
+        .red1,
+        .red2,
+        .red3,
+        .red4,
+        .red5,
+        .red6 {
+            background: linear-gradient(90deg, #EA2027, #EE5A24);
+        }
+
+        .green1,
+        .green2,
+        .green3,
+        .green4,
+        .green5,
+        .green6 {
+            background: linear-gradient(90deg, #A3CB38, #009432);
+        }
+
+        .blue1,
+        .blue2,
+        .blue3,
+        .blue4,
+        .blue5,
+        .blue6 {
+            background: linear-gradient(90deg, #1289A7, #0652DD);
+        }
+
+        .yellow1,
+        .yellow2,
+        .yellow3,
+        .yellow4,
+        .yellow5,
+        .yellow6 {
+            background: linear-gradient(90deg, #FFC312, #F79F1F);
+        }
+
+        .red1,
+        .red2,
+        .red3,
+        .red4,
+        .red5,
+        .red6,
+        .green1,
+        .green2,
+        .green3,
+        .green4,
+        .green5,
+        .green6,
+        .blue1,
+        .blue2,
+        .blue3,
+        .blue4,
+        .blue5,
+        .blue6,
+        .yellow1,
+        .yellow2,
+        .yellow3,
+        .yellow4,
+        .yellow5,
+        .yellow6 {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: 400%;
+            animation: glow 5s linear infinite alternate;
+            border: 1px solid;
+        }
+
+        .red2 {
+            transform: translateY(100px) translateZ(-100px) rotateX(90deg);
+        }
+
+        .red3 {
+            transform: translateX(100px) translateZ(-100px) rotateY(90deg);
+        }
+
+        .red4 {
+            transform: translateY(0px) translateZ(-200px) rotateX(0deg);
+        }
+
+        .red5 {
+            transform: translateX(-100px) translateZ(-100px) rotateY(90deg);
+        }
+
+        .red6 {
+            transform: translateX(0px) translateY(-100px) translateZ(-100px) rotateX(90deg);
+        }
+
+        .green2 {
+            transform: translateY(100px) translateZ(-100px) rotateX(90deg);
+        }
+
+        .green3 {
+            transform: translateX(100px) translateZ(-100px) rotateY(90deg);
+        }
+
+        .green4 {
+            transform: translateY(0px) translateZ(-200px) rotateX(0deg);
+        }
+
+        .green5 {
+            transform: translateX(-100px) translateZ(-100px) rotateY(90deg);
+        }
+
+        .green6 {
+            transform: translateX(0px) translateY(-100px) translateZ(-100px) rotateX(90deg);
+        }
+
+        .blue2 {
+            transform: translateY(100px) translateZ(-100px) rotateX(90deg);
+        }
+
+        .blue3 {
+            transform: translateX(100px) translateZ(-100px) rotateY(90deg);
+        }
+
+        .blue4 {
+            transform: translateY(0px) translateZ(-200px) rotateX(0deg);
+        }
+
+        .blue5 {
+            transform: translateX(-100px) translateZ(-100px) rotateY(90deg);
+        }
+
+        .blue6 {
+            transform: translateX(0px) translateY(-100px) translateZ(-100px) rotateX(90deg);
+        }
+
+        .yellow2 {
+            transform: translateY(100px) translateZ(-100px) rotateX(90deg);
+        }
+
+        .yellow3 {
+            transform: translateX(100px) translateZ(-100px) rotateY(90deg);
+        }
+
+        .yellow4 {
+            transform: translateY(0px) translateZ(-200px) rotateX(0deg);
+        }
+
+        .yellow5 {
+            transform: translateX(-100px) translateZ(-100px) rotateY(90deg);
+        }
+
+        .yellow6 {
+            transform: translateX(0px) translateY(-100px) translateZ(-100px) rotateX(90deg);
+        }
+
+        @keyframes glow {
+            0% {
+                background-position: 0%;
+
+            }
+
+            100% {
+                background-position: 100%;
+                opacity: .1;
+            }
+        }
+
+        @keyframes color {
+            0% {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+
+            50% {
+                transform: rotateX(180deg) rotateY(360deg);
+            }
+
+            100% {
+                transform: rotateX(360deg) rotateY(720deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="color">
+        <div class="red-box">
+            <div class="red1"></div>
+            <div class="red2"></div>
+            <div class="red3"></div>
+            <div class="red4"></div>
+            <div class="red5"></div>
+            <div class="red6"></div>
+        </div>
+        <div class="green-box">
+            <div class="green1"></div>
+            <div class="green2"></div>
+            <div class="green3"></div>
+            <div class="green4"></div>
+            <div class="green5"></div>
+            <div class="green6"></div>
+        </div>
+        <div class="blue-box">
+            <div class="blue1"></div>
+            <div class="blue2"></div>
+            <div class="blue3"></div>
+            <div class="blue4"></div>
+            <div class="blue5"></div>
+            <div class="blue6"></div>
+        </div>
+        <div class="yellow-box">
+            <div class="yellow1"></div>
+            <div class="yellow2"></div>
+            <div class="yellow3"></div>
+            <div class="yellow4"></div>
+            <div class="yellow5"></div>
+            <div class="yellow6"></div>
+        </div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,248 @@
+<!--
+ * @Author: 冷弋白
+ * @LastEditTime: 2021-01-26 00:18:31
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>冷弋白的网页</title>
+    <style>
+        :root {
+            --opa: .25;
+            --pos: 150px;
+            --bos: -150px
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            transition: all 2s ease-in-out;
+        }
+
+        html {
+            position: fixed;
+            top: 0;
+            left: 0;
+            user-select: none;
+            /* 禁止双击出现蓝色背景 */
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            perspective: 1000px;
+            background: rgb(44, 44, 44);
+            overflow: hidden;
+        }
+
+        .box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transform: rotateX(60deg) rotateY(45deg);
+            transform-origin: center center 75px;
+            transform-style: preserve-3d;
+            animation: libra 20s infinite linear;
+            zoom: .75;
+        }
+
+        @keyframes libra {
+            100% {
+                transform: rotateX(420deg) rotateY(45deg) rotateZ(360deg);
+            }
+        }
+
+        .Entity {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            transform: translateZ(-60px);
+            transform-style: preserve-3d;
+        }
+
+        .Entity1,
+        .Entity2,
+        .Entity3,
+        .Entity4,
+        .Entity5,
+        .Entity6,
+        .Entity7,
+        .Entity8 {
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100vw;
+            height: 100vh;
+            transform-style: preserve-3d;
+        }
+
+        .Entity1 {
+            transform: translate3d(var(--pos), var(--pos), var(--bos));
+        }
+
+        .Entity2 {
+            transform: translate3d(var(--bos), var(--pos), var(--bos));
+        }
+
+        .Entity3 {
+            transform: translate3d(var(--pos), var(--bos), var(--bos));
+        }
+
+        .Entity4 {
+            transform: translate3d(var(--bos), var(--bos), var(--bos));
+        }
+
+        .Entity5 {
+            transform: translate3d(var(--pos), var(--pos), var(--pos));
+        }
+
+        .Entity6 {
+            transform: translate3d(var(--bos), var(--pos), var(--pos));
+        }
+
+        .Entity7 {
+            transform: translate3d(var(--pos), var(--bos), var(--pos));
+        }
+
+        .Entity8 {
+            transform: translate3d(var(--bos), var(--bos), var(--pos));
+        }
+
+        .Entity>.layer {
+            width: 300px;
+            height: 300px;
+            background-color: #fff;
+            position: absolute;
+            transform-style: preserve-3d;
+            transform: translateZ(calc((6px * var(--a))));
+            background-color: rgb(255, 255, 255);
+            box-shadow: 0 0 5px 0 #000;
+            border: 5px solid #000;
+            opacity: .1;
+        }
+
+        .Entity1>.layer,
+        .Entity2>.layer,
+        .Entity3>.layer,
+        .Entity4>.layer,
+        .Entity5>.layer,
+        .Entity6>.layer,
+        .Entity7>.layer,
+        .Entity8>.layer {
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            transform-style: preserve-3d;
+            transform: translateZ(calc(4px * var(--a)));
+            box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.25);
+            border: 1px solid rgba(0, 0, 0, 0.25);
+            filter: brightness(75%);
+        }
+
+        .Entity1>.layer {
+            background-color: rgba(220, 53, 69, var(--opa));
+        }
+
+        .Entity2>.layer {
+            background-color: rgba(40, 167, 69, var(--opa));
+        }
+
+        .Entity3>.layer {
+            background-color: rgba(0, 123, 255, var(--opa));
+        }
+
+        .Entity4>.layer {
+            background-color: rgba(255, 193, 7, var(--opa));
+        }
+
+        .Entity5>.layer {
+            background-color: rgba(253, 126, 20, var(--opa));
+        }
+
+        .Entity6>.layer {
+            background-color: rgba(23, 162, 184, var(--opa));
+        }
+
+        .Entity7>.layer {
+            background-color: rgba(102, 16, 242, var(--opa));
+        }
+
+        .Entity8>.layer {
+            background-color: rgba(232, 62, 140, var(--opa));
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="Entity"></div>
+        <div class="Entity1"></div>
+        <div class="Entity2"></div>
+        <div class="Entity3"></div>
+        <div class="Entity4"></div>
+        <div class="Entity5"></div>
+        <div class="Entity6"></div>
+        <div class="Entity7"></div>
+        <div class="Entity8"></div>
+    </div>
+    <script>
+        var layer = [];
+        var Entity = document.querySelector('.Entity')
+        var Entity1 = document.querySelector('.Entity1')
+        var Entity2 = document.querySelector('.Entity2')
+        var Entity3 = document.querySelector('.Entity3')
+        var Entity4 = document.querySelector('.Entity4')
+        var Entity5 = document.querySelector('.Entity5')
+        var Entity6 = document.querySelector('.Entity6')
+        var Entity7 = document.querySelector('.Entity7')
+        var Entity8 = document.querySelector('.Entity8')
+        for (let i = 0; i < 50; i++) {
+            layer.push('<div class="layer" style="--a:' + i + ';"></div>')
+        }
+        Entity.innerHTML = layer.join(' ');
+        Entity1.innerHTML = layer.join(' ');
+        Entity2.innerHTML = layer.join(' ');
+        Entity3.innerHTML = layer.join(' ');
+        Entity4.innerHTML = layer.join(' ');
+        Entity5.innerHTML = layer.join(' ');
+        Entity6.innerHTML = layer.join(' ');
+        Entity7.innerHTML = layer.join(' ');
+        Entity8.innerHTML = layer.join(' ');
+        setTimeout(() => {
+            document.documentElement.style.setProperty('--pos', '100px')
+            document.documentElement.style.setProperty('--bos', '-100px')
+            setTimeout(() => {
+                document.documentElement.style.setProperty('--pos', '150px')
+                document.documentElement.style.setProperty('--bos', '-150px')
+                setTimeout(() => {
+                    document.documentElement.style.setProperty('--pos', '100px')
+                    document.documentElement.style.setProperty('--bos', '-100px')
+                }, 2000);
+            }, 2000);
+        }, 10);
+        setInterval(() => {
+            document.documentElement.style.setProperty('--pos', '100px')
+            document.documentElement.style.setProperty('--bos', '-100px')
+            setTimeout(() => {
+                document.documentElement.style.setProperty('--pos', '150px')
+                document.documentElement.style.setProperty('--bos', '-150px')
+            }, 2000);
+        }, 4000);
+    </script>
+</body>
+
+</html>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=10.0">
+  <title>冷弋白的网页</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      color: #fff;
+    }
+
+    body {
+      display: flex;
+      height: 100vh;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: #000;
+    }
+
+    .demo {
+      width: 200px;
+      height: 80px;
+      background-color: gray;
+      border-radius: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .button {
+      position: absolute;
+      width: 196px;
+      height: 76px;
+      margin: 2px 0 0 2px;
+      background-color: white;
+      border-radius: 18px;
+      text-align: center;
+      line-height: 76px;
+      font-size: 36px;
+      z-index: 1;
+    }
+
+    .demo::after {
+      content: '';
+      position: absolute;
+      right: 200px;
+      bottom: 100px;
+      width: 300px;
+      height: 300px;
+      background-color: red;
+      z-index: 0;
+      transform: rotate(45deg);
+      transition: all ease-out 0.5s;
+    }
+
+    .demo:hover::after {
+      right: -50px;
+      bottom: -100px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="lyb">
+    <div class="demo">
+      <div class="button">demo</div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script>
+    const lyb = document.querySelector('.lyb')
+  </script>
+</body>
+
+</html>

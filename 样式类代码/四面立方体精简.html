@@ -1,0 +1,105 @@
+<!--
+ * @Author: 冷弋白
+ * @LastEditTime: 2021-01-20 18:10:59
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>冷弋白的网页</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+
+        .zft {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            transform-style: preserve-3d;
+            transform-origin: center center 150px;
+            animation: a 5s infinite;
+        }
+
+        li {
+            list-style: none;
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border: 3px solid black;
+            transform-origin: center center 150px;
+        }
+
+
+        li:nth-child(-n+4) {
+            animation: b 5s infinite;
+        }
+
+        li:nth-last-of-type(1) {
+            transform-origin: center bottom;
+            animation: c 5s infinite;
+        }
+
+        li:nth-last-of-type(2) {
+            transform-origin: center bottom;
+            animation: d 5s infinite;
+        }
+
+        @keyframes a {
+            50% {
+                transform: rotateX(135deg) rotateZ(45deg);
+            }
+        }
+
+        @keyframes b {
+            50% {
+                background-color: rgba(0, 0, 0, 0.5);
+                transform: rotateY(calc(var(--s)*90deg));
+            }
+        }
+
+        @keyframes c {
+            50% {
+                background-color: rgba(0, 0, 0, 0.5);
+                transform: translateY(-300px)rotateX(-90deg);
+            }
+        }
+
+        @keyframes d {
+            50% {
+                background-color: rgba(0, 0, 0, 0.5);
+                transform: translateZ(0px)rotateX(270deg);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="zft">
+        <li style="--s:1"></li>
+        <li style="--s:2"></li>
+        <li style="--s:3"></li>
+        <li style="--s:4"></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+
+</html>

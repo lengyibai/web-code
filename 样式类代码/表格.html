@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
+  <style>
+    * {
+      transition: all 0.25s;
+    }
+
+    body {
+      position: relative;
+      display: flex;
+      width: 100vw;
+      height: 100vh;
+      justify-content: center;
+    }
+
+    .table {
+      width: 100vw;
+      max-width: 100vh;
+      height: fit-content;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      padding: 5px;
+      border: 1px solid #000;
+      word-break: break-all;
+    }
+
+  </style>
+</head>
+
+<body>
+  <table class="table">
+    <thead>
+      <th>姓名</th>
+      <th>年龄</th>
+    </thead>
+    <tbody>
+      <tr>
+        <td>张三</td>
+        <td>18</td>
+      </tr>
+      <tr>
+        <td>李四</td>
+        <td>19</td>
+      </tr>
+      <tr>
+        <td>王五</td>
+        <td>20</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+
+</html>

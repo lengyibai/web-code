@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
+    <title>冷弋白的网页</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        display: flex;
+        height: 100vh;
+        flex-direction: column;
+        align-items: center;
+        background-color: #000;
+      }
+      .lyb {
+        height: 0;
+        border: 28px solid transparent;
+        border-left-width: 20px;
+        border-image-source: url(./tag.png);
+        font-size: 20px;
+        border-image-slice: 55% 25% 45% 20% fill;
+        border-image-repeat: repeat;
+
+        .text {
+          color: #fff;
+          transform: translateY(-20px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="lyb">
+      <div class="text">啊啊啊啊啊啊啊</div>
+    </div>
+  </body>
+</html>

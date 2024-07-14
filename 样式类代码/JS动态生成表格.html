@@ -1,0 +1,66 @@
+<!--
+ * @Author: your name
+ * @Date: 2020-11-25 18:16:56
+ * @LastEditTime: 2020-11-26 12:44:34
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \undefinedc:\Users\13296\Desktop\Untitled-1.html
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style></style>
+</head>
+
+<body>
+    <div>
+        <table border="1" cellspacing="0">
+            <thead>
+                <tr>
+                    <td>姓名</td>
+                    <td>科目</td>
+                    <td>成绩</td>
+                    <td>操作</td>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</body>
+<script>
+    function Obj(name, sub, score) {
+        this.name = name;
+        this.sub = sub;
+        this.score = score;
+    }
+    var arr = [
+        new Obj('小明', 'java', '98'),
+        new Obj('小红', 'java', '97'),
+        new Obj('小张', 'java', '96'),
+    ]
+    var tb = document.querySelector('tbody');
+
+    for (var i = 0; i < arr.length; i++) {
+        var tr = document.createElement('tr');
+        tb.appendChild(tr);
+        for (var k in arr[i]) {
+            var td = document.createElement('td');
+            td.innerHTML = arr[i][k];
+            tr.appendChild(td);
+        }
+        var td = document.createElement('td');
+        td.innerHTML = '<a href="javascript:;">删除</a>';
+        tr.appendChild(td);
+        var a = document.querySelectorAll('a');
+        a[i].onclick = function () {
+            tb.removeChild(this.parentNode.parentNode);
+        }
+
+    }
+</script>
+
+</html>
